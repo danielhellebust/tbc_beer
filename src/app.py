@@ -51,6 +51,7 @@ taste_number = ['Register','1','2','3','4','5','6','7','8','9','10']
 
 # Define valid usernames and passwords
 VALID_USERNAME_PASSWORD_PAIRS = {
+    'Test':'Test',
     'Magnus': 'Lande', 'Daniel':'Hellebust', 'Fasit':'Fasit',
     'Daniel The Crest':'Haugen', 'Paul':'Kastmann', 'Håkon':'Ellekjær',
     'Øyvind':'Størdal'
