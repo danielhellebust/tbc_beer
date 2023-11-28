@@ -204,12 +204,41 @@ def update_reviews(n_clicks, participant_name, tasting_number, beer_name, beer_s
     username = ''
     if n_clicks > 0:
 
+
         username = request.authorization['username']
         participant_name = username if not participant_name else participant_name
         key = f"{participant_name}_{tasting_number}"
         new_review = {'Rytter': participant_name, 'Juleøl_nummer': tasting_number, 'Navn_på_øl': beer_name,
                       'Øl_stil': beer_style, 'Rating': rating, 'Aroma': aroma, 'Smak': taste,
                       'Alkohol_prosent': alcohol_percentage, 'Kommentarer': comments}
+
+        # Fetch the JSON object from MongoDB
+        existing_review = collection.find_one({'_id': f'Fasit_{tasting_number}'})
+        if existing_review:
+            # Extract aroma and taste from the existing JSON
+            existing_aroma = existing_review.get('Aroma', '')
+            existing_taste = existing_review.get('Smak', '')
+            existing_name = existing_review.get('Navn_på_øl', '')
+            existing_style = existing_review.get('Øl_stil', '')
+            existing_alcohol_percentage = existing_review.get('Alkohol_prosent', '')
+
+            # Compare chosen chips with existing aroma and taste
+            aroma_score = 10 if aroma == existing_aroma else 0
+            taste_score = 10 if taste == existing_taste else 0
+            name_score = 50 if beer_name == existing_name else 0
+            style_score = 10 if beer_style == existing_style else 0
+            calculate_percentage_match = lambda p1, p2, max_diff=100: max(0, 100 * (1 - abs(p1 - p2) / max_diff))
+            alcohol_score = calculate_percentage_match(alcohol_percentage, existing_alcohol_percentage, 20)
+
+            # Update the scores in the existing JSON
+            new_review['Aroma_Score'] = aroma_score
+            new_review['Taste_Score'] = taste_score
+            new_review['Name_Score'] = name_score
+            new_review['Style_Score'] = style_score
+            new_review['Alcohol_Score'] = alcohol_score
+            new_review['Total_Score'] = aroma_score + taste_score + name_score + style_score + alcohol_score
+
+
 
         # Push data to MongoDB with the composite key
         if participant_name != '':
@@ -221,7 +250,10 @@ def update_reviews(n_clicks, participant_name, tasting_number, beer_name, beer_s
         # Combine the new review DataFrame with the existing reviews
         global reviews_df
         reviews_df = pd.concat([reviews_df, review_df], ignore_index=True).drop_duplicates()
+        reviews_df = reviews_df[['Rytter', 'Juleøl_nummer', 'Navn_på_øl', 'Øl_stil', 'Rating', 'Aroma', 'Smak','Total_Score', 'Kommentarer']]
         username = request.authorization['username']
+        reviews_df = reviews_df[reviews_df['Rytter'] == username]
+
 
 
     return generate_review_table(reviews_df), username
