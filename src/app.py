@@ -19,7 +19,14 @@ taste_options = [
     'Tørket frukt, karamell',
     'Sødmefull, balansert med smak av karamell, lett krydder og fiken',
     'Fruktig og lett sødmefull, god bitterhet.',
-    'Kaffe, sjokolade, karamell, lær og kirsebær.'
+    'Kaffe, sjokolade, karamell, lær og kirsebær.',
+    'Fyldig og søtlig med kraftig maltsmak.',
+    'Sval og noe humlepreget, lett krydret ettersmak.',
+    'Røstet malt , sjokolade lette kryddertoner.',
+    'Sødmefullt preg av tørket frukt og røstet malt.',
+    'Fyldig og søtelig, maltpreget.',
+    'God dybde og fylde. Moderat bitterhet med fruktig aroma og gjær.',
+    'Frisk, preg av krydder og furu.'
 ]
 
 # Aroma options
@@ -29,7 +36,14 @@ aroma_options = [
     'Røyk, sjokolade, kaffe, tørket frukt',
     'Karamell, fruktig, malt, nøtter',
     'Krydder, malt, karamell, fruktig',
-    'Sjokolade, kaffe, karamell, tørket frukt'
+    'Sjokolade, kaffe, karamell, tørket frukt',
+    'Aroma av malt med toner av karamell, knekk og sjokolade.',
+    'Aroma av lys malt, hint av karamell og krydder.',
+    'Røstet malt, sjokolade, lette kryddertoner.',
+    'Sval aroma av mørk malt, karamell og kaffe.',
+    'Duft av tørket frukt og krydder.',
+    'Lukt av blomster, eple og pære med hint av korianderfrø.',
+    'Aroma av malt, furunål, noe krydder, frisk.'
 ]
 
 # Øl stil
@@ -37,7 +51,10 @@ beer_style = [
     'Mørk lager',
     'Spesial',
     'Pale ale',
-    'Porter & stout']
+    'Porter & stout',
+'Klosterstil',
+'Lys ale',
+'Surøl']
 
 # Create an empty DataFrame to store the reviews
 reviews_df = pd.DataFrame(
@@ -46,14 +63,48 @@ reviews_df = pd.DataFrame(
                       'Alkohol_prosent', 'Kommentarer'])
 
 # Sample beer names for the dropdown
-beer_names = ['','Løkka Julebokk', 'Nøgne Julequad', 'Nøgne My Big Fat Greek X-mas', 'Jacobsen Christmas Ale', 'Berentsens Jule Avec', 'Vossa Jol']
-taste_number = ['Register','1','2','3','4','5','6','7','8','9','10']
+beer_names = ['','Løkka Julebokk',
+              'Nøgne Julequad',
+              'Nøgne My Big Fat Greek X-mas',
+              'Jacobsen Christmas Ale',
+              'Berentsens Jule Avec',
+              'Vossa Jol',
+              'Kinn Julebukk',
+              'Ringnes Juleøl',
+              'Haandbryggeriet Nissemor',
+              'Ringnes Julebokk',
+              'St. Bernardus Christmas Ale',
+              'Delirium Deliria',
+              'Oud Beersel Winter Lambiek Sparkling Infused'
+              ]
+taste_number = ['Register',
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+                '8',
+                '9',
+                '10',
+                '11',
+                '12',
+                '13']
 
 # Define valid usernames and passwords
 VALID_USERNAME_PASSWORD_PAIRS = {
-    'Test':'Test',
-    'Magnus': 'Lande', 'Daniel':'Hellebust', 'Fasit':'Fasit',
-    'Daniel The Crest':'Haugen', 'Paul':'Kastmann', 'Håkon':'Ellekjær',
+    'Test1':'Test1',
+    'Test2':'Test2',
+    'Test3':'Test3',
+    'Test4':'Test4',
+    'Test5':'Test5',
+    'Magnus': 'Lande',
+    'Daniel':'Hellebust',
+    'Fasit':'Fasit',
+    'Daniel The Crest':'Haugen',
+    'Paul':'Kastmann',
+    'Håkon':'Ellekjær',
     'Øyvind':'Størdal'
     # Add more username-password pairs as needed
 }
@@ -93,7 +144,7 @@ app.layout = MantineProvider(
                 html.Label("Navn på øl:"),
                 ChipGroup(
                     id='beer-name',
-                    children=[Chip(option, value=option) for option in beer_names],
+                    children=[Chip(option, value=option) for option in sorted(beer_names)],
                     value=beer_names[0],
                     style={'marginBottom': 10, 'width': '100%'}
                 ),
@@ -101,7 +152,7 @@ app.layout = MantineProvider(
                 html.Label("Øl stil:"),
                 ChipGroup(
                     id='beer-style',
-                    children=[Chip(option, value=option) for option in beer_style],
+                    children=[Chip(option, value=option) for option in sorted(beer_style)],
                     style={'marginBottom': 10, 'width': '100%'}
                 ),
 
@@ -128,14 +179,14 @@ app.layout = MantineProvider(
                 html.Label("Aroma:"),
                 ChipGroup(
                     id='aroma',
-                    children=[Chip(option,value=option) for option in aroma_options],
+                    children=[Chip(option,value=option) for option in sorted(aroma_options)],
                     style={'marginBottom': 10, 'width': '100%'}
                 ),
 
                 html.Label("Smak:"),
                 ChipGroup(
                     id='taste',
-                    children=[Chip(option,value=option) for option in taste_options],
+                    children=[Chip(option,value=option) for option in sorted(taste_options)],
                     style={'marginBottom': 10, 'width': '100%'}
                 ),
                 html.Label("Alkohol prosent:"),
