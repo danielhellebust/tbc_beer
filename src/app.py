@@ -26,7 +26,8 @@ taste_options = [
     'Sødmefullt preg av tørket frukt og røstet malt.',
     'Fyldig og søtelig, maltpreget.',
     'God dybde og fylde. Moderat bitterhet med fruktig aroma og gjær.',
-    'Frisk, preg av krydder og furu.'
+    'Frisk, preg av krydder og furu.',
+    'Kremet med god bitterhet, preg av mørkt malt, sitrus, ingefær, nellik og kanel, litt kaffe og rosin.'
 ]
 
 # Aroma options
@@ -43,7 +44,8 @@ aroma_options = [
     'Sval aroma av mørk malt, karamell og kaffe.',
     'Duft av tørket frukt og krydder.',
     'Lukt av blomster, eple og pære med hint av korianderfrø.',
-    'Aroma av malt, furunål, noe krydder, frisk.'
+    'Aroma av malt, furunål, noe krydder, frisk.',
+    'Krydret og pepret preg av mørkt malt, rosin, ingefær og nellik, litt kanel, kardemomme og kaffe.'
 ]
 
 # Øl stil
@@ -54,7 +56,8 @@ beer_style = [
     'Porter & stout',
 'Klosterstil',
 'Lys ale',
-'Surøl']
+'Surøl',
+'Alkoholfritt øl']
 
 # Create an empty DataFrame to store the reviews
 reviews_df = pd.DataFrame(
@@ -75,7 +78,8 @@ beer_names = ['','Løkka Julebokk',
               'Ringnes Julebokk',
               'St. Bernardus Christmas Ale',
               'Delirium Deliria',
-              'Oud Beersel Winter Lambiek Sparkling Infused'
+              'Oud Beersel Winter Lambiek Sparkling Infused',
+              'Nøgne Ø Julefri'
               ]
 taste_number = ['Register',
                 '1',
@@ -90,7 +94,8 @@ taste_number = ['Register',
                 '10',
                 '11',
                 '12',
-                '13']
+                '13',
+               '14']
 
 # Define valid usernames and passwords
 VALID_USERNAME_PASSWORD_PAIRS = {
