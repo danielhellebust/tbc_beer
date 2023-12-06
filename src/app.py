@@ -14,49 +14,35 @@ collection = db['beer_review']  # Replace with your collection name
 
 # Taste options
 taste_options = [
-    'Toast, tørket frukt, dadler, malt.',
-    'Maltsødme, karamell, tørket frukt, røyk og sitrus',
-    'Tørket frukt, karamell',
-    'Sødmefull, balansert med smak av karamell, lett krydder og fiken',
-    'Fruktig og lett sødmefull, god bitterhet.',
-    'Kaffe, sjokolade, karamell, lær og kirsebær.',
-    'Fyldig og søtlig med kraftig maltsmak.',
-    'Sval og noe humlepreget, lett krydret ettersmak.',
-    'Røstet malt , sjokolade lette kryddertoner.',
-    'Sødmefullt preg av tørket frukt og røstet malt.',
-    'Fyldig og søtelig, maltpreget.',
-    'God dybde og fylde. Moderat bitterhet med fruktig aroma og gjær.',
-    'Frisk, preg av krydder og furu.',
-    'Kremet med god bitterhet, preg av mørkt malt, sitrus, ingefær, nellik og kanel, litt kaffe og rosin.'
+    'Fyldig smak',
+    'Lett smak.',
+    'Røstet kaffe, karamell, sjokolade.',
+    'Lett kornpreget malt, balansert bitterhet, fruktig humle med fokus på sitrus.',
+    'Fyldig og søtt øl med smak av pepperkaker',
+    'Kremet med god bitterhet, preg av mørkt malt, sitrus, ingefær, nellik og kanel, litt kaffe og rosin.',
+    'Smak av gran og krydder, innslag av tropisk frukt.',
+    'Moderat bitterhet og sødme'
+    
 ]
 
 # Aroma options
 aroma_options = [
-    'Fruktig, malt, lett karamell',
-    'Krydder, nellik, appelsin, malt',
-    'Røyk, sjokolade, kaffe, tørket frukt',
-    'Karamell, fruktig, malt, nøtter',
-    'Krydder, malt, karamell, fruktig',
-    'Sjokolade, kaffe, karamell, tørket frukt',
-    'Aroma av malt med toner av karamell, knekk og sjokolade.',
-    'Aroma av lys malt, hint av karamell og krydder.',
-    'Røstet malt, sjokolade, lette kryddertoner.',
-    'Sval aroma av mørk malt, karamell og kaffe.',
-    'Duft av tørket frukt og krydder.',
-    'Lukt av blomster, eple og pære med hint av korianderfrø.',
-    'Aroma av malt, furunål, noe krydder, frisk.',
-    'Krydret og pepret preg av mørkt malt, rosin, ingefær og nellik, litt kanel, kardemomme og kaffe.'
+    'Aroma av brent karamell.',
+    'Toner av malt og tørket frukt.',
+    'Mørk sjokolade og kaffe.',
+    'Appelsin, sitrus, furu.',
+    'Kardemomme, korianderfrø, kanel, ingefær, nellikK',
+    'Krydret og pepret preg av mørkt malt, rosin, ingefær og nellik, litt kanel, kardemomme og kaffe.',
+    'Duft av furu, krydder, frukt.',
+    'Aroma av malt og krydder.'
 ]
 
 # Øl stil
 beer_style = [
     'Mørk lager',
-    'Spesial',
-    'Pale ale',
+    'India pale ale',
     'Porter & stout',
-'Klosterstil',
-'Lys ale',
-'Surøl',
+'Krydret',
 'Alkoholfritt øl']
 
 # Create an empty DataFrame to store the reviews
@@ -66,20 +52,14 @@ reviews_df = pd.DataFrame(
                       'Alkohol_prosent', 'Kommentarer'])
 
 # Sample beer names for the dropdown
-beer_names = ['','Løkka Julebokk',
-              'Nøgne Julequad',
-              'Nøgne My Big Fat Greek X-mas',
-              'Jacobsen Christmas Ale',
-              'Berentsens Jule Avec',
-              'Vossa Jol',
-              'Kinn Julebukk',
-              'Ringnes Juleøl',
-              'Haandbryggeriet Nissemor',
-              'Ringnes Julebokk',
-              'St. Bernardus Christmas Ale',
-              'Delirium Deliria',
-              'Oud Beersel Winter Lambiek Sparkling Infused',
-              'Nøgne Ø Julefri'
+beer_names = ['','Sagene Sterk Jul',
+              'Flåklypa Spesial Juleøl',
+              'The Piggy Chocomas Party',
+              'John McClane Xmas',
+              'Endelig Jul',
+              'Nøgne Ø Julefri',
+              'Graff Julejuice',
+              'Juleglede'
               ]
 taste_number = ['Register',
                 '1',
@@ -90,27 +70,17 @@ taste_number = ['Register',
                 '6',
                 '7',
                 '8',
-                '9',
-                '10',
-                '11',
-                '12',
-                '13',
-               '14']
+                ]
 
 # Define valid usernames and passwords
 VALID_USERNAME_PASSWORD_PAIRS = {
     'Test1':'Test1',
     'Test2':'Test2',
-    'Test3':'Test3',
-    'Test4':'Test4',
-    'Test5':'Test5',
-    'Magnus': 'Lande',
+    'Arnstein': 'Haugbråten',
     'Daniel':'Hellebust',
     'Fasit':'Fasit',
-    'Daniel The Crest':'Haugen',
-    'Paul':'Kastmann',
-    'Håkon':'Ellekjær',
-    'Øyvind':'Størdal'
+    'Kristin':'Haugbråten',
+    'Siv':'Sarsten'
     # Add more username-password pairs as needed
 }
 
@@ -134,7 +104,7 @@ app.layout = MantineProvider(
             style={'maxWidth': '800px', 'margin': 'auto'},
             children=[
                 html.H1("TBC Juleøl Smaking 2023", style={'textAlign': 'center', 'marginBottom': '20px'}),
-                html.Img(src=app.get_asset_url('tbc.jpg'), style={'width': '100%', 'marginBottom': '20px'}),
+                html.Img(src=app.get_asset_url('alpingutu.jpg'), style={'width': '100%', 'marginBottom': '20px'}),
                 html.Label("Rytter:"),
                 dcc.Textarea(id='participant-name', style={'marginBottom': 10, 'width': '100%'}, disabled=True),
 
