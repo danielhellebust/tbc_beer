@@ -103,7 +103,7 @@ app.layout = MantineProvider(
         Container(
             style={'maxWidth': '800px', 'margin': 'auto'},
             children=[
-                html.H1("TBC Juleøl Smaking 2023", style={'textAlign': 'center', 'marginBottom': '20px'}),
+                html.H1("Alpingutu 76 Juleøl Smaking 2023", style={'textAlign': 'center', 'marginBottom': '20px'}),
                 html.Img(src=app.get_asset_url('alpingutu.jpg'), style={'width': '100%', 'marginBottom': '20px'}),
                 html.Label("Rytter:"),
                 dcc.Textarea(id='participant-name', style={'marginBottom': 10, 'width': '100%'}, disabled=True),
