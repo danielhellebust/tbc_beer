@@ -14,36 +14,41 @@ collection = db['beer_review']  # Replace with your collection name
 
 # Taste options
 taste_options = [
-    'Fyldig smak',
-    'Lett smak.',
-    'Røstet kaffe, karamell, sjokolade.',
-    'Lett kornpreget malt, balansert bitterhet, fruktig humle med fokus på sitrus.',
-    'Fyldig og søtt øl med smak av pepperkaker',
-    'Kremet med god bitterhet, preg av mørkt malt, sitrus, ingefær, nellik og kanel, litt kaffe og rosin.',
-    'Smak av gran og krydder, innslag av tropisk frukt.',
-    'Moderat bitterhet og sødme'
+    'Fruktig og kremet, fint preg av sitrus og urter, tydelig humlebitter ettersmak.',
+    'Kremet og fruktig, tydelig og fersk humle, lyst malt og korn, toner av barnål, sitrus og ananas.',
+    'Preg av lyst og lett røstet malt, karamell, humle, litt sitrus og barnål. Myk brus, god bitterhet.',
+    'Rund, kaffe, noe sjokolade, lang ettersmak.',
+    'Smak av bringebær og sitron.',
+    'Fruktig og fint balansert, preg av lyst malt, sitrus og urter, humlebitter ettersmak med god lengde.',
+    'Kremet med god bitterhet, preg av lyst og litt røstet malt, karamell, nøtt, humle og svale urter.',
+    'Fyldig og varm smak av søtlig malt, karamell og chili.',
+    'tropisk mango- og pasjonsfrukt.',
+    'Sval og kremet, preg av mørkt malt, humle og rugbrød, toner av kaffe, sjokolade og tørket frukt.'
     
 ]
 
 # Aroma options
 aroma_options = [
-    'Aroma av brent karamell.',
-    'Toner av malt og tørket frukt.',
-    'Mørk sjokolade og kaffe.',
-    'Appelsin, sitrus, furu.',
-    'Kardemomme, korianderfrø, kanel, ingefær, nellikK',
-    'Krydret og pepret preg av mørkt malt, rosin, ingefær og nellik, litt kanel, kardemomme og kaffe.',
-    'Duft av furu, krydder, frukt.',
-    'Aroma av malt og krydder.'
+    'Fruktig aroma preget av lyst malt, urter, litt blomst og sitrus.',
+    'Sval, ung og fersk med tydelig humlepreg, lyst malt, sitrus, barnål og tropisk frukt.',
+    'Preg av lyst og litt røstet malt, humle og urt, innslag av sitrus, aprikos, karamell og barnål.',
+    'Kakao, vanilje, kaffe, sjokolade, noe krydder.',
+    'Aroma av bringebær, ingefær og sitron.',
+    'Fruktig aroma med fint preg av lyst malt, sitrus og litt tropisk frukt.',
+    'Nyansert preg av lyst malt og korn, innslag av tørket frukt, brødskorpe, humle, urt og karamell.',
+    'Aroma av malt, karamell og chili.',
+    'tropisk mango- og pasjonsfrukt.',
+    'Aromatisk preg av mørkt malt og humle, innslag av sjokolade, kaffe, rosin, kamfer og nøtt.'
 ]
 
 # Øl stil
 beer_style = [
-    'Mørk lager',
-    'India pale ale',
-    'Porter & stout',
-'Krydret',
-'Alkoholfritt øl']
+    'Øl - India pale ale',
+    'Øl - Mørk lager',
+    'Øl - Porter & stout',
+'Øl - Surøl',
+'Øl - Red/amber',
+'Øl - Spesial']
 
 # Create an empty DataFrame to store the reviews
 reviews_df = pd.DataFrame(
@@ -52,14 +57,16 @@ reviews_df = pd.DataFrame(
                       'Alkohol_prosent', 'Kommentarer'])
 
 # Sample beer names for the dropdown
-beer_names = ['','Sagene Sterk Jul',
-              'Flåklypa Spesial Juleøl',
-              'The Piggy Chocomas Party',
-              'John McClane Xmas',
-              'Endelig Jul',
-              'Nøgne Ø Julefri',
-              'Graff Julejuice',
-              'Juleglede'
+beer_names = ['','BrewDog Punk IPA',
+              'Monkey Brew Darwin',
+              'Nøisom Steam Beer California Common',
+              'Amundsen Sticky Little Fingers Toffee Cinnabun',
+              'Oslo Brewing Voksenjulebrus',
+              'Amundsen Ink & Dagger Modern Day',
+              'Trollbryggeriet Slogen Altbier',
+              'Midtfyns Chili Klaus Ghost',
+              'Frydenlund Juicy',
+              'Verdant Velvet Overground'
               ]
 taste_number = ['Register',
                 '1',
@@ -70,17 +77,20 @@ taste_number = ['Register',
                 '6',
                 '7',
                 '8',
+                '9',
+                '10'
                 ]
 
 # Define valid usernames and passwords
 VALID_USERNAME_PASSWORD_PAIRS = {
     'Test1':'Test1',
     'Test2':'Test2',
-    'Arnstein': 'Haugbråten',
-    'Daniel':'Hellebust',
+    'Brede': 'Brede',
+    'Daniel':'Daniel',
     'Fasit':'Fasit',
-    'Kristin':'Haugbråten',
-    'Siv':'Sarsten'
+    'Johan':'Johan',
+    'Trond':'Trond',
+    'Einar':'Einar'
     # Add more username-password pairs as needed
 }
 
